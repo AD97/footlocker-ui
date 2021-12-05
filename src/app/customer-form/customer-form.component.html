@@ -1,0 +1,42 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+    <p>
+      <mat-form-field>
+        <input type="date" matInput placeholder="DOB" formControlName="dob">
+      </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field>
+          <input type="email" matInput placeholder="Email" formControlName="email">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Phone #" formControlName="phoneno">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Gender" formControlName="gender">
+        </mat-form-field>
+      </p>
+    <p>
+      <mat-form-field>
+        <input type="text" matInput placeholder="First Name" formControlName="fName">
+      </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Middle Initial" formControlName="mInitial">
+        </mat-form-field>
+      </p>
+    <p>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Last Name" formControlName="lName">
+        </mat-form-field>
+      </p>
+
+    <div class="button">
+      <button type = "submit" mat-raised-button color="primary">Update</button>
+    </div>
+
+  </form>

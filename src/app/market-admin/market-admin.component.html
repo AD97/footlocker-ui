@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="itemList">
+        <div class="item" *ngFor="let customer of customers">
+            <div class="subitem"> {{customer.fName}} </div>
+            <div class="subitem"> {{customer.lName}} </div>
+            <div class="subitem"> {{customer.dob}} </div>
+            <div class="subitem"> {{customer.email}} </div>
+            <div class="subitem"> {{customer.phoneNo}} </div>
+            <div class="subitem"> {{customer.gender}} </div>
+            <div class="button">
+                <button (click)="edit(customer)" mat-raised-button color="primary">Edit</button>
+                <button (click)="delete(customer.custID)" mat-raised-button color="danger">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="center">
+    <button (click)="create()" mat-raised-button color="primary">Create</button>
+</div>

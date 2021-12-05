@@ -1,0 +1,16 @@
+.home{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+mat-card-title {
+    text-align: center;
+}
+
+.button {
+    text-align: center;
+}
