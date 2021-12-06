@@ -11,7 +11,8 @@ export class MarketAdminComponent implements OnInit {
 
   customers: any;
   customerDetails: any;
-
+  url = "http://ec2-52-15-164-117.us-east-2.compute.amazonaws.com:8080/";
+  localurl = "http://localhost:8080/";
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
@@ -19,7 +20,8 @@ export class MarketAdminComponent implements OnInit {
       'Content-Type': 'application/json'
     });
     let options = { headers: headers };
-
+    let date = new Date().toLocaleString();
+    console.log(date);
     this.customerDetails = {
       "custID": "",
       "dob": "13-DEC-2000",
@@ -31,7 +33,7 @@ export class MarketAdminComponent implements OnInit {
       "lName": "Harris"
     }
 
-    this.http.get('http://localhost:8080/api/customers').subscribe(
+    this.http.get(`${this.localurl}api/customers`).subscribe(
       data => {
         this.customers = data;
         console.log(this.customers);
@@ -51,7 +53,7 @@ export class MarketAdminComponent implements OnInit {
       'Content-Type': 'application/json'
     });
     let options = { headers: headers };
-    this.http.delete(`http://localhost:8080/api/customers/delete/${id}`, options).subscribe(
+    this.http.delete(`${this.localurl}api/customers/delete/${id}`, options).subscribe(
       (data) =>{console.log(data);}
     )
     location.reload();

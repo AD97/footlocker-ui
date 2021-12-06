@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {MaterialModule} from './material-module'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomerFormComponent } from './customer-form/customer-form.component';
+import { ItemFormComponent } from './item-form/item-form.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { CustomerFormComponent } from './customer-form/customer-form.component';
     MarketAdminComponent,
     WarehouseAdminComponent,
     SupplierAdminComponent,
-    CustomerFormComponent
+    CustomerFormComponent,
+    ItemFormComponent
   ],
   imports: [
     BrowserModule,

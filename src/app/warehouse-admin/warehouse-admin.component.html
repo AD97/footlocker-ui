@@ -1,1 +1,28 @@
-<p>warehouse-admin works!</p>
+<div class="container">
+    <h3> List of Items</h3>
+    <div class="itemList">
+        <div class="item" *ngFor="let item of itemDetails">
+            <div class="subitem"> {{item.itemID}} </div>
+            <div class="subitem"> {{item.modelno}} </div>
+            <div class="subitem"> {{item.supplierID}} </div>
+            <div class="subitem"> {{item.modelName}} </div>
+            <div class="subitem"> {{item.apparelType}} </div>
+            <div class="subitem"> {{item.itemSize}} </div>
+            <div class="subitem"> {{item.color}} </div>
+            <div class="subitem"> {{item.price}} </div>
+
+            
+            <div class="button">
+                <button (click)="edit(item)" mat-raised-button color="primary">
+                    <mat-icon aria-hidden="false" aria-label="Example home icon">edit</mat-icon>
+                </button>
+                <button (click)="delete(item.itemID)" mat-raised-button color="danger">
+                    <mat-icon aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="center">
+    <button (click)="create()" mat-raised-button color="primary">Create</button>
+</div>

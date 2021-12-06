@@ -10,6 +10,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class CustomerFormComponent implements OnInit {
 
+  url = "http://ec2-52-15-164-117.us-east-2.compute.amazonaws.com:8080/";
+  
+  localurl = "http://localhost:8080/";
   custID: any;
   customerDetails: any 
   form: FormGroup = new FormGroup({
@@ -54,10 +57,8 @@ export class CustomerFormComponent implements OnInit {
       "mInitial": this.form.value.mInitial,
       "lName": this.form.value.lName
     }
-    let url = `http://localhost:8080/api/customers/update/${this.custID}`;
-    console.log(url);
 
-    this.http.put(url, this.customerDetails, options).subscribe(
+    this.http.put(`${this.localurl}api/customers/update/${this.custID}`, this.customerDetails, options).subscribe(
       data => {
         console.log(data);
         console.log(this.customerDetails);
@@ -74,7 +75,7 @@ export class CustomerFormComponent implements OnInit {
           "mInitial": this.form.value.mInitial,
           "lName": this.form.value.lName
         }
-        this.http.post(`http://localhost:8080/api/customers/create/`, this.customerDetails, options).subscribe(
+        this.http.post(`${this.localurl}api/customers/create/`, this.customerDetails, options).subscribe(
           data => {
             console.log(data);
             console.log(this.customerDetails);

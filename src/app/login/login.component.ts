@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -14,8 +15,14 @@ export class LoginComponent implements OnInit {
     password: new FormControl(''),
   });
 
-  constructor(private router: Router) { }
+  url = "http://ec2-52-15-164-117.us-east-2.compute.amazonaws.com:8080/";
+  localurl = "http://localhost:8080/";
+  admin: any;
+  error:string = "";
 
+  constructor(private router: Router, private http: HttpClient) { }
+  
+ 
   ngOnInit(): void {
 
   }
@@ -23,15 +30,36 @@ export class LoginComponent implements OnInit {
 
 
   submit() {
-    if (this.form.value.username === "aadhi@marketing" && this.form.value.password === "password"){
-      this.router.navigate(['/market-admin'])
-    } 
-    if (this.form.value.username === "aadhi@warehouse" && this.form.value.password === "password"){
-      this.router.navigate(['/warehouse-admin'])
-    } 
-    if (this.form.value.username === "aadhi@supplier" && this.form.value.password === "password"){
-      this.router.navigate(['/supplier-admin'])
-    } 
-    console.log(this.form.value.username);
+    let adminType: any;
+    this.admin ={
+      "username": this.form.value.username,
+      "password": this.form.value.password,
+      "type": ""
+    }
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    let options = { headers: headers };
+
+    this.http.post(`${this.localurl}api/login`, this.admin, options).subscribe(
+      data => {
+        adminType = data;
+        if (!!adminType){
+          console.log(adminType.type);
+          if(adminType.type === "Marketing"){
+    
+            this.router.navigate(['/market-admin'])
+          } else if(adminType.type === "Warehouse"){
+            this.router.navigate(['/warehouse-admin'])
+          }
+        }
+         else {
+          this.error = "Invalid Login. Try Again."
+        }
+      }
+      
+    )
+
+
   }
 }

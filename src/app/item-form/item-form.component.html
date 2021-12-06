@@ -1,0 +1,24 @@
+<div class="container">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <p>
+          <mat-form-field>
+            <input type="type" matInput placeholder="Item ID" formControlName="itemID">
+          </mat-form-field>
+        </p>
+    
+          <p>
+            <mat-form-field>
+              <input type="text" matInput placeholder="Supplier ID" formControlName="supplierID">
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field>
+              <input type="text" matInput placeholder="Model #" formControlName="modelNo">
+            </mat-form-field>
+          </p>
+        <div class="button">
+          <button type = "submit" mat-raised-button color="primary">Update</button>
+        </div>
+    
+      </form>
+</div>
