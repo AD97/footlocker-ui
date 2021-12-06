@@ -13,6 +13,7 @@ import {MaterialModule} from './material-module'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomerFormComponent } from './customer-form/customer-form.component';
 import { ItemFormComponent } from './item-form/item-form.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { ItemFormComponent } from './item-form/item-form.component';
     WarehouseAdminComponent,
     SupplierAdminComponent,
     CustomerFormComponent,
-    ItemFormComponent
+    ItemFormComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,

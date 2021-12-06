@@ -15,6 +15,7 @@ export class ItemFormComponent implements OnInit {
   localurl = "http://localhost:8080/";
   itemID: any;
   itemData: any 
+  buttonContent:any;
   form: FormGroup = new FormGroup({
     itemID: new FormControl('', [
       Validators.required,
@@ -37,6 +38,11 @@ export class ItemFormComponent implements OnInit {
   ngOnInit(): void {
     this.itemID = this.route.snapshot.paramMap.get('itemID');
     console.log(this.itemID);
+    if(!!this.itemID){
+      this.buttonContent = "Update";
+    } else {
+      this.buttonContent = "Create";
+    }
     this.form.patchValue({
       itemID: this.route.snapshot.paramMap.get('itemID'),
       modelNo: this.route.snapshot.paramMap.get('modelNo'),

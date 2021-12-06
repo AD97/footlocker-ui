@@ -1,20 +1,66 @@
-<h1> List of Customers</h1>
+<div class="top-container">
+    <h2>Marketing Dashboard</h2>
+</div>
 <div class="container">
+    <div class="tools">
+        <form [formGroup]="form" (ngSubmit)=search()>
+            <mat-form-field style = "width:300px;">
+                <input type="text" placeholder="Search Customer Name" matInput formControlName="value"
+                    [matAutocomplete]="auto">
+            </mat-form-field>
+    
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of options" [value]="option">
+                    {{option}}
+                </mat-option>
+            </mat-autocomplete>
+            <button type="submit" mat-raised-button color="danger">
+                <mat-icon aria-hidden="false" aria-label="Example home icon">search</mat-icon>
+            </button>
+            <button (click)=reset() mat-raised-button color="danger">
+                <mat-icon aria-hidden="false" aria-label="Example home icon">undo</mat-icon>
+            </button>
+            <button (click)="create()" mat-raised-button color="danger">
+                <mat-icon aria-hidden="false" aria-label="Example home icon">add</mat-icon>
+            </button>
+        </form>
+
+    </div>
     <div class="itemList">
+        <div class="item heading">
+            <div class="subitem">CUSTOMER ID</div>
+            <div class="subitem">DOB</div>
+            <div class="subitem">EMAIL</div>
+            <div class="subitem">PHONE #</div>
+            <div class="subitem">GENDER</div>
+            <div class="subitem">FIRST NAME</div>
+            <div class="subitem">MIDDLE INITIAL</div>
+            <div class="subitem">LAST NAME</div>
+            <div class="button">
+                <button mat-raised-button style="background-color:#d30622;">
+                </button>
+                <button mat-raised-button style="background-color:#d30622;">
+                </button>
+            </div>
+        </div>
+
         <div class="item" *ngFor="let customer of customers">
-            <div class="subitem"> {{customer.fName}} </div>
-            <div class="subitem"> {{customer.lName}} </div>
+            <div class="subitem"> {{customer.custID}} </div>
             <div class="subitem"> {{customer.dob}} </div>
             <div class="subitem"> {{customer.email}} </div>
             <div class="subitem"> {{customer.phoneNo}} </div>
             <div class="subitem"> {{customer.gender}} </div>
+            <div class="subitem"> {{customer.fName}} </div>
+            <div class="subitem"> {{customer.mInitial}} </div>
+            <div class="subitem"> {{customer.lName}} </div>
             <div class="button">
-                <button (click)="edit(customer)" mat-raised-button color="primary">Edit</button>
-                <button (click)="delete(customer.custID)" mat-raised-button color="danger">Delete</button>
+                <button (click)="edit(customer)" mat-raised-button color="danger">
+                    <mat-icon aria-hidden="false" aria-label="Example home icon">edit</mat-icon>
+                </button>
+                <button (click)="delete(customer.custID)" mat-raised-button style="background-color:#d30622;">
+                    <mat-icon aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
+                </button>
             </div>
         </div>
     </div>
-</div>
-<div class="center">
-    <button (click)="create()" mat-raised-button color="primary">Create</button>
 </div>

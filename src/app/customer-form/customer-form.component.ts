@@ -14,7 +14,9 @@ export class CustomerFormComponent implements OnInit {
   
   localurl = "http://localhost:8080/";
   custID: any;
-  customerDetails: any 
+  customerDetails: any; 
+  buttonContent:any;
+
   form: FormGroup = new FormGroup({
     dob: new FormControl(),
     email: new FormControl(''),
@@ -29,6 +31,11 @@ export class CustomerFormComponent implements OnInit {
   ngOnInit(): void {
     this.custID = this.route.snapshot.paramMap.get('custID');
     console.log(this.custID);
+    if(!!this.custID){
+      this.buttonContent = "Update";
+    } else {
+      this.buttonContent = "Create";
+    }
     this.form.patchValue({
       dob: this.route.snapshot.paramMap.get('dob'),
       email: this.route.snapshot.paramMap.get('email'),
